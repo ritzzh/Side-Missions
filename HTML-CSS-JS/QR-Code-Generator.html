@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(90deg,#0f1626,#567189,#567189,#0f1626);
+            color: #f5f5f5;
+            text-align: center;
+            margin: 0px;
+            padding: 0;
+            width:100%;
+            font-family: Tahoma;
+
+        }
+        hr,h1{
+            width: 30vw;
+        }
+        hr
+        {
+            margin-top: 0px;
+        }
+        h1
+        {
+            color: #0f1626;
+        }
+        main
+        {
+            width: 80vw;
+            height: 45vh;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            padding: 50px;
+        }
+        input {
+            background-color: #ff533d;
+            color: #0f1626;
+            border-radius: 9px;
+            font-size: large;
+        }
+        textarea
+        {
+            width: 20vw;
+            height: 10vh;
+            margin: 15px auto;
+            border-radius: 9px;
+            font-size: small;
+        }
+        .belhead
+        {
+            background-color: rgba(0, 0, 0, 0.5);
+            border:none;
+            width: 30vw;
+            margin: 10px auto;
+            border-radius: 9px;
+            padding: 30px;
+
+        }
+        .heading
+        {
+            border: none;
+        }
+        p
+            {
+                font-size: 10px;
+            }
+
+    </style>
+    <title>QR Code Generator</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function genQr() {
+            var gApi = "https://chart.googleapis.com/chart?CHF=BG,S,66432100&cht=qr&chs="
+            var myimg = document.getElementById("img");
+            var mytext = document.getElementById("qrtext").value;
+            var mysize = document.getElementById("size").value;
+            if (mytext != "" && mysize == "100") {
+                myimg.src = gApi + "100x100" + "&chl=" + mytext;
+                //https://chart.googleapis.com/chart?cht=qr&chs=100x100&chl=yo
+            }
+            else if (mytext != "" && mysize == "150") {
+                myimg.src = gApi + "150x150" + "&chl=" + mytext;
+
+            }
+            else if (mytext != "" && mysize == "200") {
+                myimg.src = gApi + "200x200" + "&chl=" + mytext;
+
+            }
+            else if (mytext != "" && mysize == "250") {
+                myimg.src = gApi + "250x250" + "&chl=" + mytext;
+
+            }
+            else if (mytext != "" && mysize == "300") {
+                myimg.src = gApi + "300x300" + "&chl=" + mytext;
+            }
+
+        }
+    </script>
+
+    <main>
+        <fieldset class="heading">
+            <h2>QR Code Generator</h2>
+            <hr>
+        </fieldset>
+            <fieldset class="belhead">
+                <label><img src="" id="img"></label>
+                <br>
+                <label>Select Size: <select id="size">
+                        <option value="100">100 x 100</option>
+                        <option value="150">150 x 150</option>
+                        <option value="200">200 x 200</option>
+                        <option value="250" selected>250 x 250</option>
+                        <option value="300">100 x 300</option>
+                    </select>
+                    <p>Warning: 100x100 recommended for Smart Phone Users</p>
+                </label>
+                <br><br>
+                <textarea placeholder="Enter Text/Link To Convert into QR Code..." rows="10" cols="25" id="qrtext"></textarea>
+                <br><br>
+                <input type="submit" value="Generate" onclick="genQr()">
+                <br><br>
+            </fieldset>
+    </main>
+
+</body>
+
+</html>
